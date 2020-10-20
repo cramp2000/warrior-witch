@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-     public Text healthText;
     public int healthNum = 10;
     public int MAXHEALTH = 10;
     public Image heart1, heart2, heart3, heart4, heart5;
@@ -15,18 +14,14 @@ public class GameManager : MonoBehaviour
     public void UpdateHealth(int damageType){
         if(damageType == 1 && healthNum > 0){
             healthNum--;
-            healthText.text = "Health: " + healthNum;
         }
         if(damageType == -1 && healthNum < MAXHEALTH){
             healthNum++;
-            healthText.text = "Health: " + healthNum;
         }
         if(damageType == 2 && healthNum > 1){
             healthNum-=2;
-            healthText.text = "Health: " + healthNum;
         }else if(damageType == 2 && healthNum == 1){
             healthNum--;
-            healthText.text = "Health: " + healthNum;
         }
     }
 
@@ -118,7 +113,6 @@ public class GameManager : MonoBehaviour
             heart4.sprite = NOHEART;
             heart5.sprite = NOHEART;
             healthNum = 10;
-            healthText.text = "Health: " + healthNum;
             GameObject.FindObjectOfType<PlayerMove>().Respawn();
         }
     }
