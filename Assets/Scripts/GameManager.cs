@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
         }else if(damageType == 2 && healthNum == 1){
             healthNum--;
         }
+        if(damageType == -2 && healthNum < 9){
+            healthNum+=2;
+        }else if(damageType == -2 && healthNum == 9){
+            healthNum++;
+        }
     }
 
     // Start is called before the first frame update
