@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 8d4eec92fb25ac64e80b9d1f15c26b40
   - enabled: 1
-    path: Assets/Scenes/Main_Game.unity
+    path: Assets/Scenes/CharacterSelect.unity
+    guid: 04898b64065768b46af8dd633ba1e928
+  - enabled: 1
+    path: Assets/Scenes/WarriorGame.unity
     guid: daba0b0da88143946b4bad9dff209e2f
   m_configObjects: {}

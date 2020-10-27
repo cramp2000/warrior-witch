@@ -5,14 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+        private int character = 0;
+
+    public void PlayWarrior()
+    {
+        character = 1;
+    }
+
+    public void PlayWitch()
+    {
+        character = 2;
+    }
+
     public void PlayGame ()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if(character > 0){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + character);
+        }
     }
 
     public void QuitGame ()
     {
-        Debug.Log("Quit");
+        Debug.Log("Quited");
         Application.Quit();
     }
 }

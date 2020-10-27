@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
 
     int damageType;
     int canMove = 0;
+    private Vector2 moveDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -20,14 +21,18 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         if(canMove == 0){
-        float horizontal = Input.GetAxisRaw("Horizontal");
-		float veritcal = Input.GetAxis("Vertical");
 
-		Vector2 moveDirection = new Vector2(horizontal, veritcal);
+		moveDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxis("Vertical"));
 
-		transform.Translate(moveDirection * Time.deltaTime * moveSpeed);
+		// transform.Translate(moveDirection * Time.deltaTime * moveSpeed);
         }
     }
+
+    void FixedUpdate()
+    {
+        GetComponent<Rigidbody2D>().velocity = moveDirection * moveSpeed;
+    }
+
     void OnTriggerEnter2D(Collider2D collider){
 		if(collider.gameObject.name == "Spike"){
             Debug.Log("Ouch!");
@@ -37,6 +42,11 @@ public class PlayerMove : MonoBehaviour
         if(collider.gameObject.name == "HalfHeart"){
             Debug.Log("Ooh!");
             damageType = -1;
+            GameObject.FindObjectOfType<GameManager>().UpdateHealth(damageType);
+		}
+        if(collider.gameObject.name == "FullHeart"){
+            Debug.Log("Ooh!");
+            damageType = -2;
             GameObject.FindObjectOfType<GameManager>().UpdateHealth(damageType);
 		}
         if(collider.gameObject.name == "Pit"){
